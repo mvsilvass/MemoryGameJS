@@ -6,6 +6,7 @@ back_card.src = 'assets/cards/back_card.png';
 
 const selectClickSound = new Audio('assets/sounds/select_click.wav');
 const gameOverSound = new Audio('assets/sounds/gameover.wav');
+const correctSound = new Audio('assets/sounds/correct.wav');
 
 selectClickSound.volume = 0.2;
 gameOverSound.volume = 1;
@@ -125,6 +126,7 @@ function checkMatch() {
             matchedCards.push(flippedCards[0]);
             matchedCards.push(flippedCards[1]);
             flippedCards = [];
+            correctSound.play();
 
         } else {
             setTimeout(() => {
