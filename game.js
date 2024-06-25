@@ -13,17 +13,25 @@ gameOverSound.volume = 1;
 
 let gameOverSoundPlayed = false;
 
-const MARGIN = 4;
+const MARGIN = 12;
 const CANVAS_WIDTH = canvas.width - 2 * MARGIN;
 const CANVAS_HEIGHT = canvas.height - 2 * MARGIN;
 
-const COORDINATE_IMAGE = {
-    'column1': [[MARGIN, MARGIN], [MARGIN + 138, MARGIN], [MARGIN + 276, MARGIN], [MARGIN + 414, MARGIN], [MARGIN + 552, MARGIN], [MARGIN + 690, MARGIN]],
-    'column2': [[MARGIN, MARGIN + 138], [MARGIN + 138, MARGIN + 138], [MARGIN + 276, MARGIN + 138], [MARGIN + 414, MARGIN + 138], [MARGIN + 552, MARGIN + 138], [MARGIN + 690, MARGIN + 138]],
-    'column3': [[MARGIN, MARGIN + 276], [MARGIN + 138, MARGIN + 276], [MARGIN + 276, MARGIN + 276], [MARGIN + 414, MARGIN + 276], [MARGIN + 552, MARGIN + 276], [MARGIN + 690, MARGIN + 276]],
-    'column4': [[MARGIN, MARGIN + 414], [MARGIN + 138, MARGIN + 414], [MARGIN + 276, MARGIN + 414], [MARGIN + 414, MARGIN + 414], [MARGIN + 552, MARGIN + 414], [MARGIN + 690, MARGIN + 414]],
-    'column5': [[MARGIN, MARGIN + 552], [MARGIN + 138, MARGIN + 552], [MARGIN + 276, MARGIN + 552], [MARGIN + 414, MARGIN + 552], [MARGIN + 552, MARGIN + 552], [MARGIN + 690, MARGIN + 552]]
-};
+function calculateCoordinatesImages(MARGIN) {
+    let coordinates = {};
+    for (let i = 0; i < 5; i++) {
+        let column = `column${i + 1}`;
+        coordinates[column] = [];
+        for (let j = 0; j < 6; j++) {
+            let x = j * (128 + MARGIN);
+            let y = i * (128 + MARGIN);
+            coordinates[column].push([x, y]);
+        }
+    }
+    return coordinates;
+}
+
+const COORDINATE_IMAGE = calculateCoordinatesImages(MARGIN)
 
 const images = [];
 for (let i = 1; i <= 15; i++) {
@@ -157,7 +165,7 @@ function showEndGameButtons() {
     });
 
     homeButton.addEventListener('click', () => {
-        window.location.href = 'teste.html'; // colocar a 
+        window.location.href = 'teste.html'; 
     });
 }
 
