@@ -13,11 +13,11 @@ gameOverSound.volume = 1;
 
 let gameOverSoundPlayed = false;
 
-const MARGIN = 12;
-const CANVAS_WIDTH = canvas.width - 2 * MARGIN;
-const CANVAS_HEIGHT = canvas.height - 2 * MARGIN;
+const CANVAS_WIDTH = canvas.width;
+const CANVAS_HEIGHT = canvas.height;
 
-function calculateCoordinatesImages(MARGIN) {
+function calculateCoordinatesImages() {
+    const MARGIN = 12;
     let coordinates = {};
     for (let i = 0; i < 5; i++) {
         let column = `column${i + 1}`;
@@ -31,7 +31,7 @@ function calculateCoordinatesImages(MARGIN) {
     return coordinates;
 }
 
-const COORDINATE_IMAGE = calculateCoordinatesImages(MARGIN)
+const COORDINATE_IMAGE = calculateCoordinatesImages()
 
 const images = [];
 for (let i = 1; i <= 15; i++) {
